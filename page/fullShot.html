@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../style/page.css" />
+  <title>女王</title>
+  <style>
+    * {
+      margin: 0;padding: 0
+    }
+    body, html, .full-shot{
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background-image: url("../images/page4/0304-背景大图.jpg");
+      background-size: cover;
+      background-position: 100% 0;
+      text-align: center
+    }
+  
+  </style>
+</head>
+<body>
+  <div id="fullShot" class="full-shot">
+
+  </div>
+  
+</body>
+</html>
+
+<script>
+var time = 0
+var fullShot = document.getElementById('fullShot')
+var loop = function () {
+      time++;
+      // 门完全打开后，进入下一个画面
+      if (time == 100) {
+          console.log('完成')
+            // window.location.href='./page/corridor.html'
+          return;
+      }
+      // 门打开
+      fullShot.style.backgroundPosition = (100-time)+'% 0';
+      // 光线变化
+      setTimeout(loop, 40);
+  };
+  loop()
+
+
+</script>
