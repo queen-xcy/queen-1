@@ -9,7 +9,7 @@ body,html,.swiper-container{
 }
 .page1{
 	position: relative;
-	background-image: url("../images/page/00-背景色1-3页.jpg");
+	background-image: url("../images/page1/00-背景色1-3页.jpg");
 }
 .p1logo{
 	position: absolute;
@@ -103,7 +103,7 @@ body,html,.swiper-container{
 	height: 100%;
 	background: #fe657a;
 	position: relative;
-	background-image: url("../images/page/00-背景色1-3页.jpg");	
+	background-image: url("../images/page1/00-背景色1-3页.jpg");	
 }
 .p2i1{
 	position: absolute;
@@ -180,14 +180,106 @@ body,html,.swiper-container{
 	width: 100%;
 	height: 100%;
 	position: relative;
-	background-image: url("../images/page/00-背景色1-3页.jpg");	
+	background-image: url("../images/page1/00-背景色1-3页.jpg");	
 }
 .page4{
 	background-color: cornflowerblue;
 	width: 100%;
 	height: 100%;
 	position: relative;
-	background-image: url("../images/page/00-背景色1-3页.jpg");	
+	background-image: url("../images/page1/00-背景色1-3页.jpg");	
+}
+.page5{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.page5 > .top {
+	width: 100%;
+	height: 30%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background:  url("../images/page2/01-头部图片.png") no-repeat;
+	background-size: cover;
+	z-index: 1
+}
+.page5 > .bottom {
+	width: 100%;
+	height: 80%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background:  url("../images/page2/01-藤蔓.png") no-repeat;
+	background-size: cover;
+}
+.page5 > .door {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 8%;
+	left: 0;
+	background:  url("../images/page2/01-整个门.png") no-repeat;
+	background-size: 100% 100%;
+}
+.page5 .door-frame {
+	width: 53%;
+	height: 50%;
+	position: absolute;
+	top: 23.8%;
+	left: 23%;
+	perspective: 1200px;
+}
+.page5 > .door .left{
+	transform-style: preserve-3d;
+    backface-visibility: hidden;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background:  url("../images/page2/01-门的左面.png") no-repeat;
+	background-size: 100% 100%;
+	transform-origin: left
+}
+.page5 > .door .right{
+	transform-style: preserve-3d;
+  backface-visibility: hidden;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background:  url("../images/page2/01-门的左面.png") no-repeat;
+	background-size: 100% 100%;
+	transform-origin: right
+}
+.light {
+	height: 100%;
+	left: 0; top: 0; bottom: 0;
+	background: rgb(248, 188, 57);
+	width: 100%;
+	transform: translateZ(-13px);
+}
+.page5 > .door .right{
+	transform-style: preserve-3d;
+    backface-visibility: hidden;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background:  url("../images/page2/01-门的右面.png") no-repeat;
+	background-size: 100% 100%;
+}
+.page5 .des {
+	position: absolute;
+	bottom: 5%;
+	left: 15%;
+	width: 70%;
+	height: 20%;
+	background:  url("../images/page2/01-轻叩铜环按钮.png") no-repeat;
+	background-size: 100% 100%;
 }
 .p4i1{
 	width: 40%;

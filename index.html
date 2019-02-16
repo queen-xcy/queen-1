@@ -14,9 +14,29 @@
 		<audio id="aud" src="music/天使的翅膀.mp3" autoplay="autoplay"></audio>
 		<div class="swiper-container">
 		    <div class="swiper-wrapper">
+						<div class="swiper-slide page5" id="doorBtnIn">
+								<div class="top">
+	
+								</div>
+								<div class="door">
+										<div class="door-frame" id="door">
+											<!-- 门后的光线 -->
+											<div id="light" class="light" style="opacity: 1;" hidden=""></div>
+											<div class="left" id="door-left">
+
+												</div>
+												<div class="right" id="door-right">
+													
+												</div>
+										</div>
+								</div>
+								<div class="bottom">
+									<div class="des"></div>
+								</div>
+							</div>
 		        <div class="swiper-slide page1">
 		        	<div class="p1logo">
-								<img class="logoimg" src="images/page/00-LOGO1-4页.png"/>
+								<img class="logoimg" src="images/page1/00-LOGO1-4页.png"/>
 							</div>
 		        	<div id="music" class="p1musle"></div>
 		        	<div class="p1con ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
@@ -36,11 +56,11 @@
 										就能让你格外开心
 								</div>
 		        	</div>
-		        	<img class="ani p1conimg3"  src="images/page/00-三角1-4页.png" alt="" />
+		        	<img class="ani p1conimg3"  src="images/page1/00-三角1-4页.png" alt="" />
 		        </div>
 		        <div class="swiper-slide page2">
 								<div class="p1logo">
-									<img class="logoimg" src="images/page/00-LOGO1-4页.png"/>
+									<img class="logoimg" src="images/page1/00-LOGO1-4页.png"/>
 								</div>
 								<div id="music" class="p1musle"></div>
 								<div class="p1con ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
@@ -63,11 +83,11 @@
 											却沉淀出了让人沉醉的韵味
 									</div>
 								</div>
-								<img class="ani p1conimg3"  src="images/page/00-三角1-4页.png" alt="" />
+								<img class="ani p1conimg3"  src="images/page1/00-三角1-4页.png" alt="" />
 						</div>
 		        <div class="swiper-slide page3">
 								<div class="p1logo">
-									<img class="logoimg" src="images/page/00-LOGO1-4页.png"/>
+									<img class="logoimg" src="images/page1/00-LOGO1-4页.png"/>
 								</div>
 								<div id="music" class="p1musle"></div>
 								<div class="p1con ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
@@ -90,11 +110,11 @@
 											解锁你的女王关键词吗？
 									</div>
 								</div>
-								<img class="ani p1conimg3"  src="images/page/00-三角1-4页.png" alt="" />
+								<img class="ani p1conimg3"  src="images/page1/00-三角1-4页.png" alt="" />
 						</div>
 		        <div class="swiper-slide page4">
 								<div class="p1logo">
-									<img class="logoimg" src="images/page/00-LOGO1-4页.png"/>
+									<img class="logoimg" src="images/page1/00-LOGO1-4页.png"/>
 								</div>
 								<div id="music" class="p1musle"></div>
 								<div class="p1con ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
@@ -117,7 +137,7 @@
 											却沉淀出了让人沉醉的韵味
 									</div>
 								</div>
-								<img class="ani p1conimg3"  src="images/page/00-三角1-4页.png" alt="" />
+								<img class="ani p1conimg3"  src="images/page1/00-三角1-4页.png" alt="" />
 						</div>
 		    </div>
 		</div>
@@ -149,6 +169,34 @@
 						this.style.animation= "null"
 					}
 				}
+
+				// 开门
+				var eleDoor = document.getElementById('door');
+				var eleDoorLeft = document.getElementById('door-left');
+				var eleDoorRifht = document.getElementById('door-right');
+				var eleLight = document.getElementById('light');
+				// var eleDoorBox = document.getElementById('doorBox');
+				// 开门动画
+				var percentDoor = 0;
+				var fnOpenDoor = function () {
+						percentDoor++;
+						// 门完全打开后，进入下一个画面
+						if (percentDoor == 100) {
+							 	console.log('完成')
+								// eleDoorBox.classList.add('active');
+								return;
+						}
+						// 门打开
+						eleDoorLeft.style.transform = 'rotateY('+ (-90 * percentDoor / 100) +'deg)';
+						eleDoorRifht.style.transform = 'rotateY('+ (90 * percentDoor / 100) +'deg)';
+						eleLight.removeAttribute('hidden');
+						// 光线变化
+						eleLight.style.opacity = 0.8 - 0.9 * percentDoor / 100;
+						setTimeout(fnOpenDoor, 16);
+				};
+				document.querySelector('#doorBtnIn').addEventListener('click', function () {
+						fnOpenDoor();
+				});
 		</script>
 	</body>
 </html>
