@@ -71,7 +71,16 @@ body, html, .corridor-container{
 	background-color:#ece9df;
 	line-height: 1.5;
 }
+#click-area {
+	display: none;
+	position: absolute;
+	right: 20%;
+	bottom: 44%;
+	width: 50%;
+	height: 10%;
+	background-color: red;
 
+}
 .light-change {
 	display: flex;
 	flex-wrap: nowrap;

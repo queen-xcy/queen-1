@@ -45,6 +45,7 @@
   var defalutLight = document.getElementById('light0')
   var sanjiao = document.getElementById('sanjiao')
   var ok = document.getElementById('ok')
+  var toNextPage = false
   defalutLight.addEventListener('click', function() {
     num = 1
     sanjiao.style.display = 'none'
@@ -52,7 +53,12 @@
   })
 
   ok.addEventListener('click', function() {
-    window.location.href ='./fullShot.html'
+	  if(toNextPage == false){
+		  console.log('请选择')
+	  }else {
+		  window.location.href ='./fullShot.html'
+
+	  }
   })
 
 
@@ -65,6 +71,7 @@
   }
 
   function openLight(num) {
+	  toNextPage = true
     closeAll()
     var light = document.getElementById('light' + num)
     light.style.display = 'block'
