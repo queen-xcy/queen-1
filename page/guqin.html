@@ -20,7 +20,7 @@
 			.btn-group {
 				position: absolute;
 				left: 0%;
-				bottom: 4%;
+				bottom: 15%;
 				width: 90%;
 				display: none;
 			}
@@ -50,6 +50,13 @@
 				0%{transform: translateX(-100%)}
 				100%{transform: translateX(0%);}
 			}
+			.btn-group .ok {
+				position: absolute;
+				left: 5%;
+				bottom: -40%;
+				width: 30%;
+				height: auto
+			}
 		</style>
 	</head>
 	<body>
@@ -71,7 +78,8 @@
 				<div class="btn-group-item" onclick='btnClick(3)'>
 					<img src="../images/page8/08-此去经年.png" >
 				</div>
-			</div>
+				<img onclick='ok(3)' class="ok" src="../images/page7/07-确定.png" >
+			</div>			
 		</div>
 	</body>
 </html>
@@ -83,4 +91,27 @@
 		$('.click-gupin ').hide()
 		$('.sanjiao').hide()
 	})
+	
+	var toNextPage = false
+	function btnClick(n){
+		toNextPage = true
+		$('.btn-group-item').css('border','none')
+		$($('.btn-group-item')[n-1]).css('border','solid 2px #4eebfa')
+		$('.full-bg').hide()
+		$('.tip').hide()
+		if(n==1){
+			$('.full-bg1').fadeIn()
+			
+		}else if(n==2){
+			$('.full-bg2').fadeIn()
+		}else if(n==3){
+			$('.full-bg3').fadeIn()
+		}
+	}
+
+	function ok() {
+		if(toNextPage) {
+			window.location.href = './unlock.html'
+		}
+	}
 </script>
