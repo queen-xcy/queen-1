@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<link rel="stylesheet" href="../style/page.css" />
+		<style type="text/css">
+			html {
+				font-size: 12px;
+			}
+			.full-shot {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				background: url(../images/page9-10/09-背景.jpg) no-repeat;
+				background-size: cover;
+			}
+			.bg-warp {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
+			.bg-warp img {
+				display: none;
+			}
+			.top-window {
+				position: absolute;
+				width: 100%;
+				height: 82%;
+				left: 0;
+				top: 0;
+				z-index: 1;
+
+				
+			}
+				
+			.left {
+				position: absolute;
+				width: 5%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				background: url(../images/page9-10/09-框左.png) no-repeat;
+				background-size: cover;
+				z-index: 1;
+
+			}
+			.middle {
+				position: absolute;
+				width: 55%;
+				height: 100%;
+				left: 5%;
+				top: 0;
+				background: url(../images/page9-10/09-门左边.png) no-repeat;
+				background-size: 100% 100%;
+				transform-style:preserve-3d;
+				transform-origin:left;
+				z-index: 1;
+
+			}
+			.right {
+				position: absolute;
+				width: 40%;
+				height: 100%;
+				left: 60%;
+				top: 0;
+				background: url(../images/page9-10/09-门右边.png) no-repeat;
+				background-size: 100% 100%;
+				transform-style:preserve-3d;
+				transform-origin:right;
+				z-index: 1;
+
+			}
+			.bottom-window {
+				position: absolute;
+				width: 100%;
+				height: 18%;
+				left: 0;
+				top: 82%;
+				background: url(../images/page9-10/09-框下.png) no-repeat;
+				background-size: cover;
+				z-index: 1;
+
+			}
+			.hand {
+				position: absolute;
+				width: 25%;
+				height: 20%;
+				right: -10%;
+				top: 30%;
+				background: url(../images/page9-10/09-手.png) no-repeat;
+				background-size: cover;
+				z-index: 1;
+
+			}
+			.sanjiao {
+				position: absolute;
+				right: 3%;
+				top: 20%;
+				height: auto;
+				animation: upArrow 1s infinite ;
+				z-index: 1;
+
+			}
+			@keyframes upArrow{
+				0%{transform: translateY(80%)}
+				100%{transform:translateY(0%)}
+			}
+			.tip {
+				left: 5%;
+				bottom: 70%;
+				display: none;
+				z-index: 1;
+
+			}
+			.btn-group {
+				position: absolute;
+				right: 2%;
+				bottom: 5%;
+				width: 60%;
+				display: none;
+				z-index: 1;
+
+			}
+			.btn-group-item {
+				line-height: 0;
+				width: 100%;
+			}
+			.btn-group-item img{
+				width: 100%;
+			}
+			.ok {
+				position: absolute;
+				left: 5%;
+				bottom: 12%;
+				width: 30%;
+				display: none;
+				z-index: 1;
+
+			}
+			.ok img {
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="fullShot" class="full-shot">
+			
+			<div class="top-window">
+				<div class="left">
+					
+				</div>
+				<div id="window-left" class="middle">
+					
+				</div>
+				<div id="window-right" class="right">
+					
+				</div>
+				<div class="hand">
+					
+				</div>
+				<div class="sanjiao">
+					<img src="../images/page4/05-三角.png" >
+				</div>
+			</div>
+			<div class="bottom-window">
+				
+			</div>
+			<div class="tip">
+				5、优美的曲目唤起你的记忆，你决定推开窗户透透气，此时窗外的景色是？
+			</div>
+			<div class="btn-group">
+				<div class="btn-group-item">
+					<img src="../images/page9-10/09-面朝大海.png" >
+				</div>
+				<div class="btn-group-item">
+					<img src="../images/page9-10/09-星空朗月.png" >
+				</div>
+				<div class="btn-group-item">
+					<img src="../images/page9-10/09-冰涯转石.png" >
+				</div>
+			</div>
+			<div class="bg-warp">
+				<img class="bg-img" src="../images/page9-10/09-面朝大海背景.jpg" >
+				<img class="bg-img" src="../images/page9-10/09-星空朗月背景.jpg" >
+				<img class="bg-img" src="../images/page9-10/09-冰涯转石背景.jpg" >
+			</div>
+			<div class="ok">
+				<img src="../images/page3/02-确定按钮.png" >
+			</div>
+		</div>
+	</body>
+</html>
+<script src="../style/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$('.hand').on('click',function(){
+		$('.sanjiao').hide()
+		$('.hand').hide()
+		$('.tip').fadeIn()
+		$('.btn-group').fadeIn()
+		$('.ok').fadeIn()
+	})
+	var bgNumber = 1
+	var opened = false
+	var eleWindowLeft = document.getElementById('window-left');
+	var eleWindowRifht = document.getElementById('window-right');
+	var percentWindow = 0;
+	var fnOpenWindow = function() {
+		percentWindow++;
+		// 门完全打开后，进入下一个画面
+		if (percentWindow == 85) {
+			console.log('完成')
+			return;
+		}
+		// 门打开
+		eleWindowLeft.style.transform = 'rotateY(' + (-90 * percentWindow / 100) + 'deg)';
+		eleWindowRifht.style.transform = 'rotateY(' + (90 * percentWindow / 100) + 'deg)';
+		setTimeout(fnOpenWindow, 16);
+	};
+	$('.btn-group-item').on('click',function(){
+		$('.tip').hide()
+		var n= $(this).index()
+		bgNumber = n+1
+		$('.btn-group-item').css('border','none')
+		$(this).css('border','solid 2px #4eebfa')
+		if(opened==false){
+			fnOpenWindow()
+			opened = true
+		}
+		$('.bg-img').hide()
+		$($('.bg-img')[n]).fadeIn()
+	})
+	$('.ok').on('click',function(){
+		var url ='./unlock.html?bgNumber='+bgNumber
+		if(opened == true){
+			window.location.href=url
+		}
+		
+	})
+</script>
