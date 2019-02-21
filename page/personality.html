@@ -2,7 +2,8 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="stylesheet" href="../style/page.css" />
 		<title>女王</title>
@@ -19,21 +20,95 @@
 			width: 100%;
 			height: 100%;
 			position: relative;
-			background-image: url("../images/page11/11-01.jpg");
 			background-size: 100% 100%;
 			overflow: hidden;
+			background-position-x: -5%;
 
+		}
+		.keyWord {
+			position: absolute;
+			width: 77%;
+			height: 16%;
+			left: 11%;
+		}
+		.keyWord1 {
+			top: 35%;
+			background: url(../images/page11/善良.png) no-repeat;
+			background-size: cover;
+		}
+		.keyWord2 {
+			top: 52%;
+			background: url(../images/page11/灵动.png) no-repeat;
+			background-size: cover;
+		}
+		.keyWord3 {
+			top: 68%;
+			background: url(../images/page11/超脱.png) no-repeat;
+			background-size: cover;
+		}
+		.open {
+			position: absolute;
+			width: 46%;
+			height: 10%;
+			bottom: 4%;
+			left: 27%;
+			background: url(../images/page11/开启按钮.png) no-repeat;
+			background-size: 100%;
+		}
+			
+		.ewm {
+			position: absolute;
+			width: 20%;
+			height: 12%;
+			bottom: 3%;
+			right: 3%;
+			background: url(../images/page11/二维码.jpg) no-repeat;
+			background-size: 100%;
+		}
+		.name {
+			position: absolute;
+			width: 30%;
+			height: 10%;
+			top: 18%;
+			right: 2%;
+			background: url(../images/page11/结果文本框.png) no-repeat;
+			background-size: 100%;
 		}
   </style>
 	</head>
 	<body>
 		<div id='screen' class="screen">
+			<div class="keyWord keyWord1">
+				
+			</div>
+			<div class="keyWord keyWord2">
+				
+			</div>
+			<div class="keyWord keyWord3">
+				
+			</div>
+			<div class="open">
+				
+			</div>
+			<div class="ewm">
+				
+			</div>
+			<div class="name"></div>
 		</div>
 	</body>
 </html>
 <script src="../style/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-	$('#screen').on('click',function(){
+	var bgc = {
+		'1': '../images/page11/沉稳女王.jpg',
+		'2': '../images/page11/灵动女王.jpg',
+		'3': '../images/page11/浪漫女王.jpg',
+	}
+	var search = window.location.search;
+	var screen = document.getElementById('screen')
+	var type = search[search.length - 1];
+	screen.style.backgroundImage = 'url('+(bgc[type])+')';
+	$('.open').on('click',function(){
 		window.location.href='./last.html'
 	})
 </script>

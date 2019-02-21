@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="stylesheet" href="../style/page.css" />
 		<title>女王</title>
@@ -20,9 +20,15 @@
       text-align: center;
 			overflow: hidden;
     }
+		.ok-btn {
+			bottom: 2%;
+		}
+
 		.tip {
-			bottom: 35%;
+			width: 55%;
+			bottom: 30%;
 			display: none;
+			text-align: left;
 		}
 		.light-change {
 			display: none;
@@ -31,7 +37,7 @@
 			display: none;
 		}
 		.light-change-container {
-			bottom: 10%;
+			bottom: 8%;
 		}
 		.statu ,.chushi-statu{
 			position: absolute;
@@ -44,7 +50,10 @@
 			height: 100%;
 		}
 		@keyframes upArrow{
-			0%{transform: translateY(80%)}
+			0%{transform: translateY(0%)}
+			25%{transform:translateY(50%)}
+			50%{transform:translateY(0%)}
+			75%{transform:translateY(-50%)}
 			100%{transform:translateY(0%)}
 		}
 		.chushi-statu>.sanjiao{
@@ -54,6 +63,7 @@
 			left: 50%;
 			top: 20%;
 			animation: upArrow 1s infinite ;
+			display: none;
 		}
 		#click-area {
 			display: none;
@@ -71,13 +81,24 @@
 			height: 23%;
 			display: none;
 		}
+		.gifDiv {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+		}
   </style>
 	</head>
 	<body>
+		<audio id="chooseMic" src="../music/选定声.wav" >
+			当前浏览器不支持audio
+		</audio>
 		<div id="fullShot" class="full-shot">
 			<div class="chushi-statu">
 				<img class="sanjiao" src="../images/page4/05-三角.png" >
 				<img src="../images/page4/WechatIMG188.jpeg" >
+				<img class="gifDiv" src="../images/page4/2-1.gif" >
 			</div>
 			<div class="statu first-statu" style="position: relative;">
 				<img class="first-statu-img" src="../images/page4/05-背景-绿色.jpg" alt="">
@@ -112,8 +133,9 @@
 	var time = 0
 	var fullShot = document.getElementById('fullShot')
 	var toNextStatu = false
+	var chooseMic = document.getElementById('chooseMic')
 	var loop = function() {
-		time++;
+		time+=2;
 		// 门完全打开后，进入下一个画面
 		if (time == 200) {
 			console.log('完成')
@@ -143,9 +165,9 @@
 	}
 	loop()
 	function openLight(num) {
+		chooseMic.play()
 		toNextStatu = true
 		  $('.first-statu').hide()
-			$('.tip').hide()
 			$('.chose-box').css('border','none')
 			$($('.first-statu')[num]).show()
 			$($('.chose-box')[num]).css('border','solid 2px #4eebfa')
