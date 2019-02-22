@@ -3,7 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="stylesheet" href="../style/page.css" />
 		<style type="text/css">
@@ -22,10 +23,15 @@
 				position: absolute;
 				left: 5%;
 				bottom: 20%;
+				width: 36%;
 				display: none;
+			}
+			.btn-group img{
+				width: 100%;
 			}
 			.btn-group-item {
 				line-height: 0;
+				width: 100%;
 			}
 			.btn-ok {
 				margin-top: 20px;
@@ -50,7 +56,9 @@
 				background-size: cover;
 			}
 			.tip {
-				bottom: 80%;
+				bottom: 85%;
+				width: 54%;
+				text-align: left;
 				display: none;
 			}
 			.click-screen {
@@ -61,7 +69,10 @@
 				height: 30%;
 			}
 			@keyframes upArrow{
-				0%{transform: translateY(80%)}
+				0%{transform: translateY(0%)}
+				25%{transform:translateY(50%)}
+				50%{transform:translateY(0%)}
+				75%{transform:translateY(-50%)}
 				100%{transform:translateY(0%)}
 			}
 			.sanjiao{
@@ -71,10 +82,28 @@
 				left: 50%;
 				top: 6%;
 				animation: upArrow 1s infinite ;
+				display: none;
+			}
+				
+			.btn-ok {
+				position: absolute;
+				width: 30%;
+				bottom: 4%;
+				left: 35%;
+				display: none;
 			}
 		</style>
 	</head>
 	<body>
+		<audio id="fhMic" src="../music/P9-凤凰叫.mp3" >
+			当前浏览器不支持audio
+		</audio>
+		<audio id="wfMic" src="../music/P9微风阵阵.wav" >
+			当前浏览器不支持audio
+		</audio>
+		<audio id="xsMic" src="../music/P9溪水潺潺.wav" >
+			当前浏览器不支持audio
+		</audio>
 		<div id="fullShot" class="full-shot">
 			<img class="sanjiao" src="../images/page4/05-三角.png" >
 			<div class="click-screen">
@@ -99,9 +128,10 @@
 				<div class="btn-group-item" onclick='btnClick(3)'>
 					<img src="../images/page7/禅意山水.png" >
 				</div>
-				<div class="btn-group-item btn-ok" onclick='ok()'>
-					<img src="../images/page7/07-确定.png" >
-				</div>
+				
+			</div>
+			<div class="btn-ok" onclick='ok()'>
+				<img src="../images/page7/07-确定.png" >
 			</div>
 			<div class="tip">3、屏风上的图案似乎隐藏着关于美丽的秘密......你认为屏风的纹样是？</div>
 
@@ -111,19 +141,33 @@
 <script src="../style/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	var toNextPage = false
+	var fhMic = document.getElementById('fhMic')
+	var wfMic = document.getElementById('wfMic')
+	var xsMic = document.getElementById('xsMic')
 	function btnClick(n){
 		toNextPage = true
 		$('.btn-group-item').css('border','none')
 		$($('.btn-group-item')[n-1]).css('border','solid 2px #4eebfa')
 		$('.full-bg').hide()
-		$('.tip').hide()
 		if(n==1){
 			$('.full-bg1').fadeIn()
+			fhMic.load()
+			fhMic.play()
+			wfMic.pause()
+			xsMic.pause()
 			
 		}else if(n==2){
 			$('.full-bg2').fadeIn()
+			fhMic.pause()
+			wfMic.load()
+			wfMic.play()
+			xsMic.pause()
 		}else if(n==3){
 			$('.full-bg3').fadeIn()
+			fhMic.pause()
+			wfMic.pause()
+			xsMic.load()
+			xsMic.play()
 		}
 	}
 	function ok (){
@@ -137,6 +181,7 @@
 	$('.click-screen').on('click',function(){
 		$('.tip').fadeIn()
 		$('.btn-group').fadeIn()
+		$('.btn-ok').fadeIn()
 		$('.click-screen').hide()
 		$('.sanjiao').hide()
 	})

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title></title>
 		<link rel="stylesheet" href="../style/page.css" />
@@ -20,9 +20,10 @@
 			.bg-warp {
 				position: absolute;
 				width: 100%;
-				height: 100%;
+				height: 82%;
 			}
 			.bg-warp img {
+				height: 100%;
 				display: none;
 			}
 			.top-window {
@@ -102,15 +103,19 @@
 				height: auto;
 				animation: upArrow 1s infinite ;
 				z-index: 1;
+				display: none;
 
 			}
 			@keyframes upArrow{
-				0%{transform: translateY(80%)}
+				0%{transform: translateY(0%)}
+				25%{transform:translateY(50%)}
+				50%{transform:translateY(0%)}
+				75%{transform:translateY(-50%)}
 				100%{transform:translateY(0%)}
 			}
 			.tip {
 				left: 5%;
-				bottom: 70%;
+				bottom: 75%;
 				display: none;
 				z-index: 1;
 
@@ -146,6 +151,16 @@
 		</style>
 	</head>
 	<body>
+		<audio id="dhMic" src="../music/P11大海（有海鸟叫）.wav" >
+			
+			当前浏览器不支持audio
+		</audio>
+		<audio id="xkMic" src="../music/P11静好星空.mp3" >
+			当前浏览器不支持audio
+		</audio>
+		<audio id="pbMic" src="../music/P11瀑布声.mp3" >
+			当前浏览器不支持audio
+		</audio>
 		<div id="fullShot" class="full-shot">
 			
 			<div class="top-window">
@@ -195,6 +210,9 @@
 </html>
 <script src="../style/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
+	var dhMic = document.getElementById('dhMic')
+	var xkMic = document.getElementById('xkMic')
+	var pbMic = document.getElementById('pbMic')
 	$('.hand').on('click',function(){
 		$('.sanjiao').hide()
 		$('.hand').hide()
@@ -220,8 +238,24 @@
 		setTimeout(fnOpenWindow, 16);
 	};
 	$('.btn-group-item').on('click',function(){
-		$('.tip').hide()
 		var n= $(this).index()
+		if(n==0){
+			dhMic.load()
+			dhMic.play()
+			xkMic.pause()
+			pbMic.pause()
+			
+		}else if(n==1){
+			dhMic.pause()
+			xkMic.load()
+			xkMic.play()
+			pbMic.pause()
+		}else if(n==2){
+			dhMic.pause()
+			xkMic.pause()
+			pbMic.load()
+			pbMic.play()
+		}
 		bgNumber = n+1
 		$('.btn-group-item').css('border','none')
 		$(this).css('border','solid 2px #4eebfa')
