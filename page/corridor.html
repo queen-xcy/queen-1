@@ -2,11 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../style/page.css" />
   <title>女王</title>
   <style type="text/css">
+	.corridor-container {
+		background: url(../images/page3/02-背景图.jpg) no-repeat;
+		background-size: cover;
+	}
   	.new-light {
 		width: 100%;
 		height: 100%;
@@ -23,19 +27,26 @@
 		display: none;
 	}
 	@keyframes rightArrow{
-		0%{transform: translateX(-100%)}
-		100%{transform: translateX(0%);}
-	}
-	@keyframes rightArrow2{
 		0%{transform: translateX(0%)}
-		100%{transform: translateX(100%);}
+		25%{transform:translateX(50%)}
+		50%{transform:translateX(0%)}
+		75%{transform:translateX(-50%)}
+		100%{transform:translateX(0%)}
+		
 	}
 	.light-sanjiao {
-		animation: rightArrow 1s infinite ;
+		animation: rightArrow 0.8s infinite ease-in-out;
+		display: none;
 	}
   </style>
 </head>
 <body>
+	<audio id="chooseMic" src="../music/选定声.wav" >
+		当前浏览器不支持audio
+	</audio>
+	<audio id="stepMic" src="../music/P4脚步声.mp3" >
+		当前浏览器不支持audio
+	</audio>
   <div class="corridor-container">
     <div class="mark">
 
@@ -68,23 +79,29 @@
 </html>
 <script src="../style/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8"></script>
 <script>
-
+	$(document).ready(function(){
+		stepMic.play()
+	})
   var num = 0
   var defalutLight = document.getElementById('light0')
   var sanjiao = document.getElementById('sanjiao')
   var ok = document.getElementById('ok')
   var toNextPage = false
+  var chooseMic = document.getElementById('chooseMic')
+  var stepMic = document.getElementById('stepMic')
   defalutLight.addEventListener('click', function() {
     num = 1
     sanjiao.style.display = 'none'
     openLight(num)
+	
   })
 
   ok.addEventListener('click', function() {
 	  if(toNextPage == false){
 		  console.log('请选择')
 	  }else {
-		  window.location.href ='./fullShot.html'
+		  // window.location.href ='./fullShot.html'
+		  window.location.href ='../full.html'			
 
 	  }
   })
@@ -101,8 +118,8 @@
   }
 
   function openLight(num) {
+	  chooseMic.play()
 	toNextPage = true
-	$('.tip').hide()
     closeAll()
     $($('.new-light')[num]).show()
 	$($('.chose-box')[num-1]).css('border','solid 2px #4eebfa')

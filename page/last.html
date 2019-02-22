@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<link rel="stylesheet" href="../style/page.css" />
-		<title>女王</title>
+
 		<style>
+			html {
+				font-size: 100px;
+			}
 			* {
 				margin: 0;padding: 0
 			}
@@ -22,9 +18,12 @@
 				overflow: hidden;
 				display: none;
 			}
-			.screen img {
+			.screen>img {
+				position: absolute;
 				width: 100%;
 				height: 100%;
+				left: 0;
+				top: 0;
 			}
 			#first {
 				z-index: 1;
@@ -33,38 +32,161 @@
 			#second {
 				z-index: 2;
 			}
+			.name,.phone,.toThird {
+				position: absolute;
+				z-index: 3;
+			}
+			.name {
+				top: 54%;
+				left: 20%;
+				font-size: 0.24rem;
+				width: 60%;
+				background-color: #fff;
+				border-radius: 0.05rem;
+				text-align: left;
+				color: #c64f5e;
+				height: 0.4rem;
+				line-height: 0.4rem;
+			}
+			.name>span {
+				float: left;
+			}
+			.name>input {
+				outline: none;
+				height: 0.4rem;
+				line-height: 0.4rem;
+				float: left;
+				border: none;
+				margin-left: 10px;
+				font-size: 0.2rem;
+				width: 1.3rem;
+			}
+			.phone {
+				top: 64%;
+				left: 20%;
+				font-size: 0.24rem;
+				width: 60%;
+				background-color: #fff;
+				border-radius: 0.05rem;
+				text-align: left;
+				color: #c64f5e;
+				height: 0.4rem;
+				line-height: 0.4rem;
+			}
+			.phone>span {
+				float: left;
+			}
+			.phone>input {
+				outline: none;
+				height: 0.4rem;
+				line-height: 0.4rem;
+				float: left;
+				border: none;
+				margin-left: 10px;
+				font-size: 0.2rem;
+				width: 1.3rem;
+			}
+			.toThird {
+				width: 32%;
+				height: 10%;
+				top: 80%;
+				left: 33%;
+				text-align: center;
+				line-height: 0;
+			}
+			.toThird>img {
+				width: 100%;
+			}
 			#third {
 				z-index: 3;
+			}
+			@keyframes upArrow{
+				0%{transform: translateY(0%)}
+				25%{transform:translateY(50%)}
+				50%{transform:translateY(0%)}
+				75%{transform:translateY(-50%)}
+				100%{transform:translateY(0%)}
+			}
+			.screen>.sanjiao{
+				width: auto;
+				height: auto;
+				position: absolute;
+				left: 64%;
+				top: 60%;
+				animation: upArrow 1s infinite ;
+			}
+			.btn-group {
+				width: 100%;
+				position: absolute;
+				left: 0;
+				top: 66%;
+			}
+			.btn-group>img {
+				float: left;
+				width: 32%;
+			}
+			.btn-group>.imgL {
+				margin-left: 14%;
+				margin-right: 4%;
+			}
+			.btn-group>.imgR {
+				margin-left: 4%;
+				margin-right: 12%;
 			}
 			#four {
 				z-index: 4;
 			}
+			.screen>.lastOk {
+				width: 32%;
+				height: auto;
+				position: absolute;
+				left: 33%;
+				top: 66%;
+			}
 		</style>
-	</head>
-	<body>
+	<div>
 		<div id='first' class="screen">
 			<img src="../images/page12/12--.jpg" >
 		</div>
 		<div id="second" class="screen">
-			<img src="../images/page12/12-1.jpg" >
+			<img src="../images/page12/12-背景1.jpg" >
+			<div class="name">
+				<span>
+					&nbsp;姓名
+				</span>
+				<input type="text" name="" id="" value="" />
+			</div>
+			<div class="phone">
+				<span>
+					&nbsp;电话
+				</span>
+				<input type="text" name="" id="" value="" />
+			</div>
+			<div class="toThird">
+				<img class="toThirdImg" src="../images/page12/12-立即领取.png" >
+			</div>
 		</div>
 		<div id="third" class="screen">
-			<img src="../images/page12/12-2.jpg" >
+			<img src="../images/page12/12-背景2.jpg" >
+			<img class="sanjiao" src="../images/page4/05-三角.png" >
+			<div class="btn-group">
+				<img class="imgL" src="../images/page12/12-现在领取.png" >
+				<img class="imgR" src="../images/page12/12-宝藏升级.png" >
+			</div>
 		</div>
 		<div id="four" class="screen">
-			<img src="../images/page12/12-3.jpg" >
+			<img src="../images/page12/12-背景3.jpg" >
+			<img class="lastOk" src="../images/page12/12-确认领取.png" >
 		</div>
-	</body>
-</html>
-<script src="../style/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8"></script>
+	</div>
 <script type="text/javascript">
 	$('#first').on('click',function(){
 		$('#second').fadeIn()
 	})
-	$('#second').on('click',function(){
+	$('.toThirdImg').on('click',function(){
 		$('#third').fadeIn()
 	})
-	$('#third').on('click',function(){
+	$('.imgR').on('click',function(){
 		$('#four').fadeIn()
 	})
 </script>

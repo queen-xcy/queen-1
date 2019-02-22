@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" >
+    <title>测试</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+    <link rel="stylesheet" href="style/queen.css" />
+    <link rel="stylesheet" href="style/page.css" />
+</head>
+<body>
+    <div id="ui-view"></div><!--view区域，必须，id可以随意起，但是需要和js配置代码一致-->
+    <script type="text/html" id="error">
+        <!--可以自定义错误信息,可选，定义一些404页面等-->
+        <div>
+            {{errStatus}}
+        </div>
+        <div>
+            {{errContent}}
+        </div>
+    </script>
+    
+    <script type="text/javascript" src="./style/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="./style/vipspa.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        vipspa.start({
+            view: '#ui-view',
+            errorTemplateId: '#error', // 可选
+            router: {
+                'fullShot': {
+                    templateUrl: './page/fullShot.html',
+                    controller: '',
+                },
+                'treasureChest': {
+                    templateUrl: './page/treasureChest.html',
+                    controller: '',
+                },
+                'screen': {
+                    templateUrl: './page/screen.html',
+                    controller: '',
+                },
+                'guqin': {
+                    templateUrl: './page/guqin.html',
+                    controller: '',
+                },
+                'outWindow': {
+                    templateUrl: './page/outWindow.html',
+                    controller: '',
+                },
+                'unlock': {
+                    templateUrl: './page/unlock.html',
+                    controller: '',
+                },
+                'personality': {
+                    templateUrl: './page/personality.html',
+                    controller: '',
+                },
+                'last': {
+                    templateUrl: './page/last.html',
+                    controller: '',
+                },
+                'defaults': 'fullShot' //默认路由
+            }
+        });
+
+    });
+    </script>
+</body>
+</html>
