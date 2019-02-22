@@ -85,6 +85,7 @@
 	</div>
 <script type="text/javascript">
 	var gupinMic = document.getElementById('gupinMic')
+	var num = 0
 	$(document).ready(function(){
 		gupinMic.play()
 	})
@@ -97,6 +98,7 @@
 	
 	var toNextPage = false
 	function btnClick(n){
+		num = n
 		toNextPage = true
 		$('.btn-group-item').css('border','none')
 		$($('.btn-group-item')[n-1]).css('border','solid 2px #4eebfa')
@@ -110,14 +112,15 @@
 			$('.full-bg3').fadeIn()
 		}
 		setTimeout(function(){
-			window.location.href = '#outWindow'
+			ok()
 		},500)
 		
 	}
 
 	function ok() {
 		if(toNextPage) {
-			window.location.href = '#outWindow'
+			var search = `${window.location.search}&guqin=${num}`
+			window.location.href = `${search}#outWindow`
 		}
 	}
 </script>

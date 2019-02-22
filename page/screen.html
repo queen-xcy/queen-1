@@ -132,7 +132,9 @@
 	var fhMic = document.getElementById('fhMic')
 	var wfMic = document.getElementById('wfMic')
 	var xsMic = document.getElementById('xsMic')
+	var num = 0
 	function btnClick(n){
+		num = n
 		toNextPage = true
 		$('.btn-group-item').css('border','none')
 		$($('.btn-group-item')[n-1]).css('border','solid 2px #4eebfa')
@@ -163,7 +165,8 @@
 			console.log('请选择')
 			return
 		}else{
-			window.location.href='#guqin'
+			var search = `${window.location.search}&screen=${num}`
+			window.location.href=`${search}#guqin`
 		}
 	}
 	$('.click-screen').on('click',function(){

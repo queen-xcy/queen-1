@@ -93,16 +93,13 @@
     num = 1
     sanjiao.style.display = 'none'
     openLight(num)
-	
   })
 
   ok.addEventListener('click', function() {
 	  if(toNextPage == false){
 		  console.log('请选择')
-	  }else {
-		  // window.location.href ='./fullShot.html'
-		  window.location.href ='../full.html'			
-
+	  } else {
+		  window.location.href =`../full.html?corridor=${num}`
 	  }
   })
 
@@ -117,19 +114,21 @@
     })
   }
 
-  function openLight(num) {
+  function openLight(selectNum) {
+		num = selectNum
 	  chooseMic.play()
-	toNextPage = true
+		toNextPage = true
     closeAll()
     $($('.new-light')[num]).show()
-	$($('.chose-box')[num-1]).css('border','solid 2px #4eebfa')
-  }
-$('#click-box').on('click',function(){
-	$('.tip').fadeIn()
-	$('.light-change-container').fadeIn()
-	$('#ok').fadeIn()
-	$('.light-sanjiao').hide()
-})
+		$($('.chose-box')[num-1]).css('border','solid 2px #4eebfa')
+	}
+	
+	$('#click-box').on('click',function(){
+		$('.tip').fadeIn()
+		$('.light-change-container').fadeIn()
+		$('#ok').fadeIn()
+		$('.light-sanjiao').hide()
+	})
 
 
 

@@ -257,7 +257,8 @@
 		$($('.bg-img')[n]).fadeIn()
 	})
 	$('.ok').on('click',function(){
-		var url ='#unlock?bgNumber='+bgNumber
+		var search = `${window.location.search}&outWindow=${bgNumber}`
+		var url =`${search}#unlock?bgNumber=${bgNumber}`
 		if(opened == true){
 			window.location.href=url
 		}

@@ -118,19 +118,18 @@
 
 	</div>
 	<script>
-		var time = 0
+	var time = 0
 	var fullShot = document.getElementById('fullShot1')
 	var toNextStatu = false
 	var chooseMic = document.getElementById('chooseMic')
-	var loop = function() {
+	let num = 0
+	var Animation1 = function() {
 		time+=2;
     // 门完全打开后，进入下一个画面
 		if (time == 200) {
 			console.log('完成')
 			$('#click-bed').fadeIn()
 			$('.chushi-statu').show()
-			
-			// window.location.href='./page/corridor.html'
 			return;
 		}
 		// 门打开 从左到右,然后从右到左
@@ -139,10 +138,23 @@
 			fullShot.style.backgroundPosition = (200 - time) + '% 0';
 		}
 		// 光线变化
-		setTimeout(loop, 40);
+		setTimeout(Animation1, 40);
 	}
-	loop()
-	function openLight(num) {
+	var Animation2 = function() {
+		time+=2;
+    // 门完全打开后，进入下一个画面
+		if (time >= 50) {
+			console.log('完成2')
+			window.location.href='#screen'
+			return;
+		}
+		// 门打开 从左到右,然后从右到左
+		fullShot.style.backgroundPosition = (time) + '% 0';
+		// 光线变化
+		setTimeout(Animation2, 40);
+	}
+	function openLight(selectNum) {
+		num = selectNum
 		chooseMic.play()
 		toNextStatu = true
 		  $('.first-statu').hide()
@@ -163,7 +175,8 @@
 		}
 	})
 	$('#click-area').on('click',function(){
-		window.location.href ='#treasureChest'
+		let search = `${window.location.search}&fullShot=${num}`
+		window.location.href =`${search}#treasureChest`
 	})
 	$('#click-bed').on('click',function(){
 			$('.tip').fadeIn()
@@ -173,4 +186,17 @@
 			$('#click-bed').hide()
 			$('.sanjiao').hide()
 		})
+		init()
+		function init() {
+			var search = window.location.search
+			var hasFullShot = search.indexOf('fullShot') != -1
+			if(hasFullShot) {
+				fullShot.style.backgroundPosition = '0% 0'
+				Animation2()
+				console.log('第二次动画')
+			} else {
+				Animation1()
+				console.log('第一次动画')				
+			}
+		}
 	</script>
