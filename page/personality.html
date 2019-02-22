@@ -1,110 +1,153 @@
+<style>
+	* {
+		margin: 0;
+		padding: 0
+	}
 
-		<style>
-			* {
-      margin: 0;padding: 0
-    }
-    body, html, .full-shot {
-      width: 100%;
-      height: 100%;
-			overflow: hidden;
-		}
-		.screen {
-			width: 100%;
-			height: 100%;
-			position: relative;
-			background-size: 100% 100%;
-			overflow: hidden;
-			background-position-x: -5%;
+	body,
+	html,
+	.full-shot {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
 
-		}
-		.keyWord {
-			position: absolute;
-			width: 77%;
-			height: 16%;
-			left: 11%;
-		}
-		.keyWord1 {
-			top: 35%;
-			background: url(../images/page11/善良.png) no-repeat;
-			background-size: cover;
-		}
-		.keyWord2 {
-			top: 52%;
-			background: url(../images/page11/灵动.png) no-repeat;
-			background-size: cover;
-		}
-		.keyWord3 {
-			top: 68%;
-			background: url(../images/page11/超脱.png) no-repeat;
-			background-size: cover;
-		}
-		.open {
-			position: absolute;
-			width: 46%;
-			height: 10%;
-			bottom: 4%;
-			left: 27%;
-			background: url(../images/page11/开启按钮.png) no-repeat;
-			background-size: 100%;
-		}
-			
-		.ewm {
-			position: absolute;
-			width: 20%;
-			height: 14%;
-			bottom: 1%;
-			right: 3%;
-			background: url(../images/page11/二维码.jpg) no-repeat;
-			background-size: 100%;
-		}
-		.name {
-			position: absolute;
-			width: 30%;
-			height: 10%;
-			top: 18%;
-			right: 2%;
-			background: url(../images/page11/结果文本框.png) no-repeat;
-			background-size: 100%;
-		}
-  </style>
-	<div>
-		<div id='screen' class="screen">
-			<div class="keyWord keyWord1">
-				
-			</div>
-			<div class="keyWord keyWord2">
-				
-			</div>
-			<div class="keyWord keyWord3">
-				
-			</div>
-			<div class="open">
-				
-			</div>
-			<div class="ewm">
-				
-			</div>
-			<div class="name"></div>
+	.screen {
+		width: 100%;
+		height: 100%;
+		position: relative;
+		background-size: 100% 100%;
+		overflow: hidden;
+		background-position-x: -5%;
+
+	}
+
+	.keyWord {
+		position: absolute;
+		width: 77%;
+		height: 16%;
+		left: 11%;
+	}
+
+	.keyWord1 {
+		top: 35%;
+		background: url(../images/page11/善良.png) no-repeat;
+		background-size: cover;
+	}
+
+	.keyWord2 {
+		top: 52%;
+		background: url(../images/page11/灵动.png) no-repeat;
+		background-size: cover;
+	}
+
+	.keyWord3 {
+		top: 68%;
+		background: url(../images/page11/超脱.png) no-repeat;
+		background-size: cover;
+	}
+
+	.open {
+		position: absolute;
+		width: 46%;
+		height: 10%;
+		bottom: 4%;
+		left: 27%;
+		background: url(../images/page11/开启按钮.png) no-repeat;
+		background-size: 100%;
+	}
+
+	.ewm {
+		position: absolute;
+		width: 20%;
+		height: 14%;
+		bottom: 1%;
+		right: 3%;
+		background: url(../images/page11/二维码.jpg) no-repeat;
+		background-size: 100%;
+	}
+
+	.name {
+		position: absolute;
+		width: 30%;
+		height: 10%;
+		top: 18%;
+		right: 2%;
+		background: url(../images/page11/结果文本框.png) no-repeat;
+		background-size: 100%;
+	}
+</style>
+<div>
+	<div id='screen' class="screen">
+		<div class="keyWord keyWord1">
+
+		</div>s
+		<div class="keyWord keyWord2">
+
 		</div>
+		<div class="keyWord keyWord3">
+
+		</div>
+		<div class="open">
+
+		</div>
+		<div class="ewm">
+
+		</div>
+		<div class="name"></div>
 	</div>
+</div>
 <script>
 	var bgc = {
 		'1': '../images/page11/沉稳女王.jpg',
 		'2': '../images/page11/灵动女王.jpg',
 		'3': '../images/page11/浪漫女王.jpg',
 	}
+	var map = {
+		'corridor1': '沉稳',
+		'corridor2': '浪漫',
+		'corridor3': '隐忍',
+		'fullShot1': '温柔',
+		'fullShot2': '灵动',
+		'fullShot3': '浪漫',
+		'screen1': '独立',
+		'screen2': '灵动',
+		'screen3': '超脱',
+		'guqin1': '浪漫',
+		'guqin2': '灵动',
+		'guqin3': '坚韧',
+		'outWindow1': '超脱',
+		'outWindow2': '浪漫',
+		'outWindow3': '坚韧',
+	}
 	var search = window.location.hash;
 	var screen = document.getElementById('screen')
 	var type = search[search.length - 1];
 	var queryMap = formatSearch(window.location.search)
-	
+
 	// 此处为选择的内容
-	console.log('queryMap', queryMap)
+	let queenTem = []
+	for(var key in queryMap) {
+		let queenKey = `${key}${queryMap[key]}`
+		queenTem.push(map[queenKey])
+	}
 
+	var queenArr = uniq(queenTem)
+	if(queenArr.length < 3) {
+		// 去重少于3的情况
+		var allTem = ['沉稳', '浪漫', '隐忍', '温柔', '灵动', '独立', '超脱', '坚韧']
+		var filterTem = allTem.filter(function(tem) {
+			return queenArr.indexOf(tem) == -1
+		})
+		queenArr = queenArr.concat(filterTem[0])
+	} else {
+		queenArr = [queenArr[0],queenArr[1],queenArr[2]]
+	}
+	console.log('queenArr', queenArr)
 
-	screen.style.backgroundImage = 'url('+(bgc[type])+')';
-	$('.open').on('click',function(){
-		window.location.href='#last'
+	screen.style.backgroundImage = 'url(' + (bgc[type]) + ')';
+	$('.open').on('click', function () {
+		window.location.href = '#last'
 	})
 
 	// 转化工具
@@ -114,7 +157,7 @@
 			var arr = se.split("&"),
 				obj = {},
 				newarr = [];
-			$.each(arr, function(i, v) {
+			$.each(arr, function (i, v) {
 				newarr = v.split("=");
 				if (typeof obj[newarr[0]] === "undefined") {
 					obj[newarr[0]] = newarr[1];
@@ -123,4 +166,14 @@
 			return obj;
 		}
 	}
+
+	function uniq(array){
+    var temp = []; //一个新的临时数组
+    for(var i = 0; i < array.length; i++){
+        if(temp.indexOf(array[i]) == -1){
+            temp.push(array[i]);
+        }
+    }
+    return temp;
+}
 </script>
